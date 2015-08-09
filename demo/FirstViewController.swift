@@ -20,6 +20,42 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    var total: Int = 0, a_sumar: Int = 1
 
+    func printTotal( total total: Int ) {
+        self.label.text = "\( total )"
+    }
+
+    func obtainTextFieldValue() -> Int {
+        let textField: String? = self.campo.text
+
+        if let _ = textField{
+            return Int( textField! )!
+        } else {
+            return 1
+        }
+    }
+
+    @IBOutlet var label: UILabel!
+    @IBOutlet var campo: UITextField!
+
+    @IBAction func sumar(sender: UIButton) {
+        a_sumar = obtainTextFieldValue()
+
+        self.total += a_sumar
+
+        self.printTotal(total: self.total )
+    }
+
+    @IBAction func restar(sender: UIButton) {
+        a_sumar = obtainTextFieldValue()
+
+        self.total -= a_sumar
+
+        self.printTotal(total: self.total )
+    }
+
+    @IBAction func quitar_teclado(sender: UIButton) {
+        self.campo.resignFirstResponder()
+    }
 }
-
